@@ -16,6 +16,8 @@ class ProductController extends Controller
 
         if($product){
             $msg = 'All Data Displayed';
+        }elseif($product->count() < 0){
+            $msg = 'Record List is Empty.';
         }else{
             $msg = 'Something wrong';
         }

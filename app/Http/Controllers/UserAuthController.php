@@ -5,44 +5,48 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+use  App\Http\Controllers\ApiResponseController;
 
-class UserAuthController extends Controller
+class UserAuthController extends ApiResponseController
 {
     public function register(Request $request)
     {
-        $registerUserData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|min:8'
-        ]);
+        try {
+            $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email|unique:users',
+                'password' => 'required|string|min:6',
+            ]);
+        } catch (ValidationException $e) {
+            return $this->sendError('Validation Error', $e->errors(), 422);
+        }
+
         $user = User::create([
-            'name' => $registerUserData['name'],
-            'email' => $registerUserData['email'],
-            'password' => Hash::make($registerUserData['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
-        return response()->json([
-            'message' => 'User Created ',
-        ]);
+
+        $token = $user->createToken('AuthToken')->plainTextToken;
+
+        return $this->sendResponse(['token' => $token], 'User registered successfully.');
     }
 
 
     public function login(Request $request)
     {
-        $loginUserData = $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|min:8'
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
         ]);
-        $user = User::where('email', $loginUserData['email'])->first();
-        if (!$user || !Hash::check($loginUserData['password'], $user->password)) {
-            return response()->json([
-                'message' => 'Invalid Credentials'
-            ], 401);
+
+        if (!auth()->attempt($request->only('email', 'password'))) {
+            return $this->sendError('Unauthorized', ['error' => 'Invalid credentials'], 401);
         }
-        $token = $user->createToken($user->name . '-AuthToken')->plainTextToken;
-        return response()->json([
-            'access_token' => $token,
-            'msg' => 'Logged in Success',
-        ]);
+        $user = auth()->user();
+        $token = $user->createToken('AuthToken')->plainTextToken;
+        return $this->sendResponse(['token' => $token], 'User logged in successfully.');
     }
 
     public function logout()
