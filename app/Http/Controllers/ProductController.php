@@ -13,9 +13,15 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::get();
+
+        if($product){
+            $msg = 'All Data Displayed';
+        }else{
+            $msg = 'Something wrong';
+        }
         return response()->json([
             'product' => $product,
-            'msg' => 'All Data Displayed',
+            'msg' => $msg,
         ]);
     }
 
