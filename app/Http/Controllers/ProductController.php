@@ -12,17 +12,13 @@ class ProductController extends Controller
      */
     public function index()
     {
-
-
-        
         $product = Product::get();
-
-        if($product){
+        if ($product) {
             $msg = 'All Data Displayed';
-        }elseif($product->count() < 0){
+        } elseif ($product->count() < 0) {
             $msg = 'Record List is Empty.';
-        }else{
-            $msg = 'Something wrong';
+        } else {
+            $msg = 'omething wrong';
         }
         return response()->json([
             'product' => $product,
