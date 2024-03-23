@@ -11,6 +11,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <style>
+        p {
+            text-align: justify;
+        }
+    </style>
 </head>
 
 <body>
@@ -59,16 +64,17 @@
     <section class="container mt-5">
         <div class="row">
             <div class="col-md-8">
-                <p>
+                <p style="text-align:justify;">
                     Laravel is a web application framework with expressive, elegant syntax. A web framework provides a
                     structure and starting point for creating your application, allowing you to focus on creating
                     something
-                    amazing while we sweat the details. Laravel strives to provide an amazing developer experience while providing powerful features such as
+                    amazing while we sweat the details. Laravel strives to provide an amazing developer experience while
+                    providing powerful features such as
                     thorough dependency injection, an expressive database abstraction layer, queues and scheduled jobs,
                     unit
                     and integration testing, and more.
                 </p>
-                <p>
+                <p style="text-align:justify;">
                     Whether you are new to PHP web frameworks or have years of experience, Laravel is a framework that
                     can
                     grow with you. We'll help you take your first steps as a web developer or give you a boost as you
@@ -77,11 +83,38 @@
                 </p>
             </div>
 
-            <div class="col-md-8">
-                fvbfgbfgb
+            <div class="col-md-4">
+                <img src="{{ asset('img/swe.jpg') }}" class="w-100 h-100" alt="" srcset="">
             </div>
         </div>
     </section>
+
+
+    {{-- Whai is API  --}}
+    <section class="container mt-5">
+        <h1 class="text-center mb-3">What is API</h1>
+
+        <p>Many people ask themselves, “What is an API?” API is the acronym for application programming interface — a
+            software intermediary that allows two applications to talk to each other. APIs are an accessible way to
+            extract and share data within and across organizations.</p>
+
+        <p>APIs are all around us. Every time you use a rideshare app, send a mobile payment, or change the thermostat
+            temperature from your phone, you’re using an API.</p>
+
+        <div class="text-center">
+
+            <img src="{{ asset('img/api_exm.png') }}" style="width: 40%;" alt="" srcset="">
+        </div>
+    </section>
+
+
+    <footer class="bg-dark text-light text-center">
+        <p class="py-3 mb-0 text-center">&copy; 2024 Nurul. All rights reserved.</p>
+    </footer>
+
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
