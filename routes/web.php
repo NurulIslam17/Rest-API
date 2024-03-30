@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\MultidataInsetConteroller;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -30,5 +31,6 @@ Route::middleware([
     //     return Inertia::render('Dashboard');
     // })->name('dashboard');
 
-    Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('Dashboard');
+    Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+    Route::get('/multiple-data-handle',[MultidataInsetConteroller::class,'index'])->name('multidata_insert');
 });
