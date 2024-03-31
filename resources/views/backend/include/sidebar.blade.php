@@ -15,9 +15,15 @@
                     <a class="js-arrow" href="{{ route('dashboard')}}">
                         <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                 </li>
-                <li class="{{ $route == 'multidata_insert' ? 'active' : ''}}">
+                <li class="d-none {{ $route == 'multidata_insert' ? 'active' : ''}}">
                     <a class="js-arrow" href="{{ route('multidata_insert')}}">
                         <i class="fas fa-tachometer-alt"></i>Multi-data</a>
+                </li>
+
+
+                <li class="{{ $route == 'family_info' ? 'active' : ''}}">
+                    <a class="js-arrow" href="{{ route('family_info')}}">
+                        <i class="fas fa-tachometer-alt"></i>Family</a>
                 </li>
 
                 <li class="has-sub">

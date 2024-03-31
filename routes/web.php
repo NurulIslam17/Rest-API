@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\FamilyController;
 use App\Http\Controllers\Backend\MultidataInsetConteroller;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +34,6 @@ Route::middleware([
 
     Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
     Route::get('/multiple-data-handle',[MultidataInsetConteroller::class,'index'])->name('multidata_insert');
+    Route::get('/family-info',[FamilyController::class,'index'])->name('family_info');
+    Route::get('/create-family-info',[FamilyController::class,'createFamilyInfo'])->name('create_family');
 });

@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.3/css/dataTables.dataTables.css">
     <!-- Main CSS-->
     <link href="{{ asset('asset/css/theme.css') }}" rel="stylesheet" media="all">
+    <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
 
 </head>
 
@@ -98,9 +99,18 @@
     <!-- Main JS-->
     <script src="{{ asset('asset/js/main.js') }}"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
+
     <script>
         new DataTable('#example', {});
     </script>
+
+    <script>
+        $('.dropify').dropify();
+    </script>
+
+    @stack('js');
 
 </body>
 
