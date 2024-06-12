@@ -48,6 +48,13 @@
                     <a class="js-arrow" href="#">
                         <i class="fas fa-gear"></i>Setting</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
+
+                        @if (auth()->user()->type == 1)
+                            <li>
+                                <a href="{{ route('users')}}">Users</a>
+                            </li>
+                        @endif
+
                         <li>
                             <a href="login.html">User Profile</a>
                         </li>
