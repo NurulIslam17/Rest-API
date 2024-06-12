@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         p {
             text-align: justify;
@@ -51,7 +52,18 @@
                 </ul>
                 <div class="d-flex text-dark">
 
-                    <select class="form-control changeLang">
+
+                    @if (isset(auth()->user()->id))
+                        <a href="{{ route('dashboard')}}" title="Dashboard" class="btn btn-outline-secondary"><i class="bi bi-ui-checks-grid"></i></a>
+                        <a onclick="document.getElementById('logout').submit();" title="logout"  class="btn btn-danger ms-2"><i class="bi bi-box-arrow-right"></i></a>
+                        <form id="logout" action="{{ route('logout') }}" method="post">
+                            @csrf
+                        </form>
+                    @else
+                        <a href="{{ route('login')}}" class="btn btn-secondary">Login</a>
+                    @endif
+
+                    <select class="form-control changeLang ms-2">
                         <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>English</option>
                         <option value="sp" {{ session()->get('locale') == 'sp' ? 'selected' : '' }}>Spanish</option>
                         <option value="bn" {{ session()->get('locale') == 'bn' ? 'selected' : '' }}>Bangla</option>
