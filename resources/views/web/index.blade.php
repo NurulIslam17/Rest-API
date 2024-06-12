@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-dark text-light">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="{{ asset('img/logo.png') }}" class="rounded-circle" style="height: 55px; width:55px;"
+                <img src="{{ asset('img/logo.png') }}" class="rounded-circle" style="height: 45px; width:45px;"
                     alt="" srcset="">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
