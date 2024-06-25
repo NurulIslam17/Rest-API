@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FamilyController;
 use App\Http\Controllers\Backend\MultidataInsetConteroller;
+use App\Http\Controllers\Backend\UserController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -36,4 +37,8 @@ Route::middleware([
     Route::get('/multiple-data-handle',[MultidataInsetConteroller::class,'index'])->name('multidata_insert');
     Route::get('/family-info',[FamilyController::class,'index'])->name('family_info');
     Route::get('/create-family-info',[FamilyController::class,'createFamilyInfo'])->name('create_family');
+
+    Route::get('/users',[UserController::class,'index'])->name('users');
+    Route::get('/user-profile',[UserController::class,'user_profile'])->name('user_profile');
+    Route::post('/user-profile',[UserController::class,'update_profile'])->name('user_profile');
 });
