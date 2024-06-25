@@ -39,4 +39,6 @@ Route::middleware([
     Route::get('/create-family-info',[FamilyController::class,'createFamilyInfo'])->name('create_family');
 
     Route::get('/users',[UserController::class,'index'])->name('users');
+    Route::get('/user-profile',[UserController::class,'user_profile'])->name('user_profile');
+    Route::post('/user-profile',[UserController::class,'update_profile'])->name('user_profile');
 });
