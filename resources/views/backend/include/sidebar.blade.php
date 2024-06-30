@@ -74,6 +74,18 @@
                 @endif
 
 
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
+                        <i class="fas fa-book"></i>Post</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+
+                        <li>
+                            <a href="{{ route('post.index') }}">Posts</a>
+                        </li>
+                    </ul>
+                </li>
+
+
             </ul>
         </nav>
     </div>
