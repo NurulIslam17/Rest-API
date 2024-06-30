@@ -2,9 +2,11 @@
 
 namespace App\Console;
 
+use App\Mail\PostMailCount;
 use App\Models\User;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Mail;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,17 +17,21 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->call(function(){
-            User::where('is_active',0)->delete();
-        })->monthly();
+        // $schedule->call(function(){
+        //     User::where('is_active',0)->delete();
+        // })->monthly();
+
+        // $schedule->call(function(){
+        //     User::where('type',0)->update(['attendence_notification' => 'Ensure You In time']);
+        // })->dailyAt('09:00');
+
+        // $schedule->call(function(){
+        //     User::where('type',0)->update(['attendence_notification' => 'Ensure You Out time']);
+        // })->dailyAt('18:00');
 
         $schedule->call(function(){
-            User::where('type',0)->update(['attendence_notification' => 'Ensure You In time']);
-        })->dailyAt('09:00');
-
-        $schedule->call(function(){
-            User::where('type',0)->update(['attendence_notification' => 'Ensure You Out time']);
-        })->dailyAt('18:00');
+            Mail::to('nurulcse09@gmail.com')->send(new PostMailCount());
+        })->everyTenMinutes();
     }
 
     /**

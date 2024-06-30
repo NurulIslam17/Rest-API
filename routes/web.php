@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\FamilyController;
 use App\Http\Controllers\Backend\MultidataInsetConteroller;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
@@ -29,9 +30,6 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    // Route::get('/dashboard', function () {
-    //     return Inertia::render('Dashboard');
-    // })->name('dashboard');
 
     Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
     Route::get('/multiple-data-handle',[MultidataInsetConteroller::class,'index'])->name('multidata_insert');
@@ -41,4 +39,10 @@ Route::middleware([
     Route::get('/users',[UserController::class,'index'])->name('users');
     Route::get('/user-profile',[UserController::class,'user_profile'])->name('user_profile');
     Route::post('/user-profile',[UserController::class,'update_profile'])->name('user_profile');
+
+    Route::get('/post',[PostController::class,'index'])->name('post.index');
+    Route::get('/create',[PostController::class,'create'])->name('post.create');
+    Route::post('/store',[PostController::class,'store'])->name('post.store');
+
+
 });
