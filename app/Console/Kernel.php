@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function(){
             Mail::to('nurulcse09@gmail.com')->send(new PostMailCount());
-        })->everyTenMinutes();
+        })->everyFifteenMinutes();
     }
 
     /**

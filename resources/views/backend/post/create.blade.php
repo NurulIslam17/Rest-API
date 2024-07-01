@@ -5,7 +5,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endpush
 @section('title')
-    Profile Updates
+    Create
 @endsection
 
 @section('main')
