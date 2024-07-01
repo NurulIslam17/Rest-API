@@ -1,6 +1,6 @@
 @extends('backend.base');
 @section('title')
-    Family Info
+    Post
 @endsection
 
 @section('main')
@@ -15,33 +15,33 @@
                     <thead>
                         <tr>
                             <th>SL</th>
-                            <th>Name</th>
-                            <th>Email</th>
+                            <th>Title</th>
+                            <th>Description</th>
                             <th>Status</th>
-                            <th>DOJ</th>
+                            <th>Created At</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
 
-                        {{-- @foreach ($users as $user)
+                        @foreach ($posts as $post)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $post->title }}</td>
+                                <td>{{ $post->desc }}</td>
                                 <td>
-                                    @if ($user->is_active == 1)
+                                    @if ($post->status == 1)
                                         <span class="badge badge-success">Active</span>
                                     @else
                                         <span class="badge badge-warning">Inactive</span>
                                     @endif
                                 </td>
-                                <td>{{ date('d M Y', strtotime($user->created_at)) }}</td>
+                                <td>{{ date('d M Y', strtotime($post->created_at)) }}</td>
                                 <td class="process">
                                     <a href="#" class="btn btn-info">Change Status</a>
                                 </td>
                             </tr>
-                        @endforeach --}}
+                        @endforeach
 
                     </tbody>
                 </table>

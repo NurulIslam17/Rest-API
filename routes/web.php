@@ -43,6 +43,4 @@ Route::middleware([
     Route::get('/post',[PostController::class,'index'])->name('post.index');
     Route::get('/create',[PostController::class,'create'])->name('post.create');
     Route::post('/store',[PostController::class,'store'])->name('post.store');
-
-
 });
