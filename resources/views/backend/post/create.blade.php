@@ -19,9 +19,14 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="father" class="control-label mb-1">Title</label>
-                            <input id="cc-pament" name="title" id="title" value="" type="text"
-                                class="form-control" aria-required="true" aria-invalid="false">
+                            <label for="father" class="control-label mb-1">Title <span
+                                    class="text-danger">*</span></label>
+                            <input id="cc-pament" name="title" id="title" value="{{ old('title') }}" type="text"
+                                class="form-control @error('title') is-invalid @enderror" aria-required="true"
+                                aria-invalid="false">
+                            @error('title')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -35,9 +40,13 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="father" class="control-label mb-1">Description</label>
-                            <textarea name="desc" class="form-control" id="summernote" cols="30" rows="10"></textarea>
+                            <label for="father" class="control-label mb-1">Description <span class="text-danger">*</span> </label>
+                            <textarea name="desc" class="form-control  @error('desc') is-invalid @enderror" id="summernote" cols="30"
+                                rows="10"></textarea>
                         </div>
+                        @error('desc')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                 </div>
@@ -51,4 +60,3 @@
         </div>
     </div>
 @endsection
-
