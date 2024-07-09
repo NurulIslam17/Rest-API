@@ -15,6 +15,7 @@
                     <thead>
                         <tr>
                             <th>SL</th>
+                            <th>Image</th>
                             <th>Title</th>
                             <th>Description</th>
                             <th>Status</th>
@@ -27,6 +28,9 @@
                         @foreach ($posts as $post)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    <img src="{{ asset($post->photo) }}" alt="" srcset="" style="height: 50px;width:50px;">
+                                </td>
                                 <td>{{ $post->title }}</td>
                                 <td>{{ $post->desc }}</td>
                                 <td>
@@ -38,7 +42,8 @@
                                 </td>
                                 <td>{{ date('d M Y', strtotime($post->created_at)) }}</td>
                                 <td class="process">
-                                    <a href="#" class="btn btn-info">Change Status</a>
+                                    <a href="#" class="btn btn-info">Status</a>
+                                    <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach

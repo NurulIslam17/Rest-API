@@ -28,7 +28,7 @@ class PostController extends Controller
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $imageName = "POST".'_'.time().'.'.$file->getClientOriginalExtension();
-                $file->move('photo/posts/'.$imageName);
+                $file->move('photo/posts/',$imageName);
                 $imagePath = 'photo/posts/'.$imageName;
                 $validated['photo'] = $imagePath;
             } else {
