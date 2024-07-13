@@ -131,7 +131,9 @@
             <div class="col-md-5">
                 <h3>Office Address</h3>
                 <hr>
-                <p><strong>Road : </strong>12 ,<strong>Building : </strong> Building,Name </p>
+                @if (isset($address))
+                    <p class="mb-0"><strong>Road : </strong>{{$address->road}}, <strong> Building : </strong> {{$address->building}},{{$address->name}} </p> 
+                @endif
                 <p>Dhaka, Bangladesh</p>
             </div>
         </div>
