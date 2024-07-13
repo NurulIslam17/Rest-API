@@ -22,7 +22,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark text-light">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('home')}}">
                 <img src="{{ asset('img/logo.png') }}" class="rounded-circle" style="height: 45px; width:45px;"
                     alt="" srcset="">
             </a>
@@ -35,7 +35,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active text-light" aria-current="page"
-                            href="#">{{ __('messages.Home') }}</a>
+                            href="{{ route('home')}}">{{ __('messages.Home') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active text-light" aria-current="page"
@@ -61,6 +61,7 @@
                         </form>
                     @else
                         <a href="{{ route('login')}}" class="btn btn-secondary">Login</a>
+                           <a href="{{ route('google-auth')}}" class="btn btn-secondary">Google</a>
                     @endif
 
                     <select class="form-control changeLang ms-2">
@@ -122,16 +123,18 @@
 
     <footer class="bg-dark text-light text-center">
     <div class="container">
-        <div class="row pt-2">
+        <div class="row pt-4">
             <div class="col-md-5">
                 <h3><span class="text-danger">@</span>Soft</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eveniet fugit nostrum ipsa consectetur officiis quia unde natus aut, cumque nihil maiores sint, vero accusantium placeat reiciendis veritatis! Magnam, dolorem?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eveniet fugit nostrum ipsa consectetur officiis quia unde natus aut, cumque nihil maiores sint, vero accusantium placeat reiciendis veritatis! Magnam, dolorem</p>
             </div>
             <div class="col-md-2"></div>
             <div class="col-md-5">
                 <h3>Office Address</h3>
                 <hr>
-                <p><strong>Road : </strong>12 ,<strong>Building : </strong> Building,Name </p>
+                @if (isset($address))
+                    <p class="mb-0"><strong>Road : </strong>{{$address->road}} <strong> Building : </strong> {{ $address->flat, }}, {{$address->building}} <strong>Area : </strong> {{$address->name}} </p>
+                @endif
                 <p>Dhaka, Bangladesh</p>
             </div>
         </div>
