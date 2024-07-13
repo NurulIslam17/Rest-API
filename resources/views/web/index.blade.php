@@ -61,6 +61,7 @@
                         </form>
                     @else
                         <a href="{{ route('login')}}" class="btn btn-secondary">Login</a>
+                           <a href="{{ route('google-auth')}}" class="btn btn-secondary">Google</a>
                     @endif
 
                     <select class="form-control changeLang ms-2">
@@ -132,7 +133,7 @@
                 <h3>Office Address</h3>
                 <hr>
                 @if (isset($address))
-                    <p class="mb-0"><strong>Road : </strong>{{$address->road}} <strong> Building : </strong> {{ $address->flat, }}, {{$address->building}} <strong>Area : </strong> {{$address->name}} </p> 
+                    <p class="mb-0"><strong>Road : </strong>{{$address->road}} <strong> Building : </strong> {{ $address->flat, }}, {{$address->building}} <strong>Area : </strong> {{$address->name}} </p>
                 @endif
                 <p>Dhaka, Bangladesh</p>
             </div>

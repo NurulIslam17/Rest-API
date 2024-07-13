@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\FamilyController;
 use App\Http\Controllers\Backend\MultidataInsetConteroller;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\GoogleAuthController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -24,6 +25,8 @@ use App\Http\Controllers\LocalizatonController;
 
 Route::get('',[WebController::class,'index'])->name('home');
 Route::get('lang/change', [LocalizatonController::class, 'changeLang'])->name('changeLang');
+Route::get('/auth/redirect',[GoogleAuthController::class,'redirect'])->name('google-auth');
+Route::get('/google-callback',[GoogleAuthController::class,'authCallback']);
 
 Route::middleware([
     'auth:sanctum',
