@@ -12,6 +12,8 @@ class PostController extends Controller
 {
     public function index()
     {
+        // $statusWisePost = Post::get()->groupBy('status');
+        // return $statusWisePost;
         $posts = Post::where('user_id',auth()->user()->id)->get();
         return view('backend.post.index',compact('posts'));
     }

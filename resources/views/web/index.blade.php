@@ -121,7 +121,23 @@
 
 
     <footer class="bg-dark text-light text-center">
+    <div class="container">
+        <div class="row pt-2">
+            <div class="col-md-5">
+                <h3><span class="text-danger">@</span>Soft</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis eveniet fugit nostrum ipsa consectetur officiis quia unde natus aut, cumque nihil maiores sint, vero accusantium placeat reiciendis veritatis! Magnam, dolorem?</p>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <h3>Office Address</h3>
+                <hr>
+                <p><strong>Road : </strong>12 ,<strong>Building : </strong> Building,Name </p>
+                <p>Dhaka, Bangladesh</p>
+            </div>
+        </div>
+
         <p class="py-3 mb-0 text-center">&copy; 2024 Nurul. All rights reserved.</p>
+    </div>
     </footer>
 
 
