@@ -31,7 +31,7 @@ class CreateAddressCommand extends Command
         $building = $this->option('bd');
         $flat = $this->option('ft');
         $road = $this->option('rd');
-        
+
         if (count($isExist)>0) {
             $address = Address::first();
             Address::where('id',$address->id)->update([
