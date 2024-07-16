@@ -14,8 +14,13 @@ class PostController extends Controller
     {
         // $statusWisePost = Post::get()->groupBy('status');
         // return $statusWisePost;
-        $posts = Post::where('user_id',auth()->user()->id)->get();
-        return view('backend.post.index',compact('posts'));
+        
+        if (auth()->user()->type == 1) {
+            $posts = Post::get();
+        } else {
+            $posts = Post::where('user_id', auth()->user()->id)->get();
+        }
+        return view('backend.post.index', compact('posts'));
     }
     public function create()
     {
@@ -29,9 +34,9 @@ class PostController extends Controller
 
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
-                $imageName = "POST".'_'.time().'.'.$file->getClientOriginalExtension();
-                $file->move('photo/posts/',$imageName);
-                $imagePath = 'photo/posts/'.$imageName;
+                $imageName = "POST" . '_' . time() . '.' . $file->getClientOriginalExtension();
+                $file->move('photo/posts/', $imageName);
+                $imagePath = 'photo/posts/' . $imageName;
                 $validated['photo'] = $imagePath;
             } else {
                 $validated['photo'] = null;
@@ -39,7 +44,6 @@ class PostController extends Controller
             Post::create($validated);
             Log::info('Success :  Post Created');
             return redirect()->route('post.index');
-
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
             return back();

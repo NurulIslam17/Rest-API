@@ -31,8 +31,8 @@
                                 <td>
                                     <img src="{{ asset($post->photo) }}" alt="" srcset="" style="height: 50px;width:50px;">
                                 </td>
-                                <td>{{ $post->title }}</td>
-                                <td>{{ $post->desc }}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($post->title, 30, $end='...')  }}</td>
+                                <td>{{ \Illuminate\Support\Str::limit($post->desc, 100, $end='...') }}</td>
                                 <td>
                                     @if ($post->status == 1)
                                         <span class="badge badge-success">Active</span>
