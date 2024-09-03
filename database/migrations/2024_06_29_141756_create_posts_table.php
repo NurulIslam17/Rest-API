@@ -14,11 +14,11 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->nullable();
-            $table->string('title')->nullable();
-            $table->text('desc')->nullable();
+            $table->bigInteger('user_id');
+            $table->string('title');
+            $table->text('desc');
             $table->string('photo')->nullable();
-            $table->boolean('status')->default(1)->comment('0 Inactive and 1 active');
+            $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });
     }
