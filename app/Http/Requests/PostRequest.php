@@ -6,9 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class PostRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+
     public function authorize(): bool
     {
         return true;
@@ -22,8 +20,10 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:255',
-            'desc' => 'required',
+            'user_id' => 'required|max:255',
+            'category_id ' => 'required',
+            'title ' => 'required',
+            'desc ' => 'required'
         ];
     }
 }
