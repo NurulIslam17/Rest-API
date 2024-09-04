@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
 use App\Services\PostService;
+use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+    use ApiResponse;
 
     private $postService;
     public function __construct(PostService $postService)
@@ -17,15 +20,16 @@ class PostController extends Controller
 
     public function index()
     {
-        //
+        $posts = $this->postService->getAllPost();
+        return $this->successResponse($posts,'ALl Blogs Retrived Successfully.');
     }
 
-
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
-    }
 
+        dd($request);
+        $this->postService->savePost($request->all());
+    }
 
     public function show(string $id)
     {
