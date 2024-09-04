@@ -26,7 +26,9 @@ class PostController extends Controller
 
     public function store(PostRequest $request)
     {
-        $this->postService->save($request->all());
+
+        dd($request);
+        $this->postService->savePost($request->all());
     }
 
     public function show(string $id)

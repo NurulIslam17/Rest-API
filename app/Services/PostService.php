@@ -15,7 +15,7 @@ class  PostService{
         return $this->postRepository->getAllPost();
     }
 
-    public function save($post){
-        return $this->postRepository->save($post);
+    public function savePost($post){
+        return $this->postRepository->savePost($post);
     }
 }

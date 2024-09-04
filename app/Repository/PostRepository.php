@@ -9,7 +9,7 @@ class PostRepository
         return Post::all();
     }
 
-    public function save($post){
+    public function savePost($post){
         return Post::create($post);
     }
 
