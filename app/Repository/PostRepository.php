@@ -25,4 +25,8 @@ class PostRepository
     {
         return Post::findOrFail($id);
     }
+
+    public function deleteById($id){
+        return Post::findOrFail($id)->delete();
+    }
 }

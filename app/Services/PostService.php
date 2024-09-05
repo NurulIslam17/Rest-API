@@ -26,4 +26,8 @@ class  PostService
     {
         return $this->postRepository->viewById($id);
     }
+
+    public function deleteById($id){
+        return $this->postRepository->deleteById($id);
+    }
 }
