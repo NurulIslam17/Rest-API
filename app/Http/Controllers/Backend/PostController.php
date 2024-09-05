@@ -21,28 +21,23 @@ class PostController extends Controller
     public function index()
     {
         $posts = $this->postService->getAllPost();
-        return $this->successResponse($posts,'ALl blogs retrived successfully.');
+        return $this->successResponse($posts, 'ALl blogs retrived successfully.');
     }
 
     public function store(Request $request)
     {
         $this->postService->savePost($request);
-        return $this->successResponse("Blog created Successfully",201);
+        return $this->successResponse("Blog created Successfully", 201);
     }
 
-    public function show(string $id)
+    public function show(int $id)
     {
-        //
+        $post = $this->postService->viewById($id);
+        return $this->successResponse($post, "Post Found Successfully");
     }
 
-    public function update(Request $request, string $id)
-    {
-
-    }
+    public function update(Request $request, string $id) {}
 
 
-    public function destroy(string $id)
-    {
-
-    }
+    public function destroy(string $id) {}
 }
