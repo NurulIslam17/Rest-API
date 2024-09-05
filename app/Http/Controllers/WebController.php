@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class WebController extends Controller
 {
     public function index(){
-        $address = Address::first();
-        return view('web.index',compact('address'));
+        return "Server running...";
+        // $address = Address::first();
+        // return view('web.index',compact('address'));
     }
 }

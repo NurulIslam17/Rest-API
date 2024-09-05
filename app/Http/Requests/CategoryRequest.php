@@ -23,7 +23,7 @@ class CategoryRequest extends FormRequest
             return [
                 'name'=>'required'
             ];
-    
+
         }
 
         if ($this->isMethod("PUT") || $this->isMethod("PATCH")) {
