@@ -24,9 +24,9 @@ class PostController extends Controller
         return $this->successResponse($posts,'ALl blogs retrived successfully.');
     }
 
-    public function store(PostRequest $request)
+    public function store(Request $request)
     {
-        $this->postService->savePost($request->all());
+        $this->postService->savePost($request);
         return $this->successResponse("Blog created Successfully",201);
     }
 
