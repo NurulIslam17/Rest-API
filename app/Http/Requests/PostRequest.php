@@ -21,9 +21,9 @@ class PostRequest extends FormRequest
     {
         return [
             'user_id' => 'required',
-            'category_id ' => 'required',
-            'title ' => 'required',
-            'desc ' => 'required'
+            'category_id' => 'required',
+            'title' => 'required',
+            'desc' => 'required'
         ];
     }
 }
