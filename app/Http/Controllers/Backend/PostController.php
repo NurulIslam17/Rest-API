@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
+use App\Models\Post;
 use App\Services\PostService;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -24,9 +25,9 @@ class PostController extends Controller
         return $this->successResponse($posts, 'ALl blogs retrived successfully.');
     }
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        $this->postService->savePost($request);
+        $this->postService->savePost($request->all());
         return $this->successResponse("Blog created Successfully", 201);
     }
 

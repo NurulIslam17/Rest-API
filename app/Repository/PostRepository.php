@@ -13,12 +13,7 @@ class PostRepository
 
     public function savePost($post)
     {
-        return Post::create([
-            "user_id" => $post->user_id,
-            "category_id" => $post->category_id,
-            "title" => $post->title,
-            "desc" => $post->desc
-        ]);
+        return Post::create($post);
     }
 
     public function viewById($id)
