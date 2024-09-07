@@ -40,7 +40,8 @@ class PostController extends Controller
     public function update(Request $request, string $id) {}
 
 
-    public function destroy(int $id) {
+    public function destroy(int $id)
+    {
         $this->postService->deleteById($id);
         return $this->successResponse("Post deleted successfully");
     }
