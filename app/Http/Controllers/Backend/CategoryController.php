@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = $this->categoryService->getAllCatgory();
-        return $this->successResponse($categories, 'Data Retrived Succefully.');
+        return $this->successResponse('Data Retrived Succefully.',$categories);
     }
 
     public function store(CategoryRequest $request)

@@ -12,13 +12,17 @@ class PostRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
+        if ($this->isMethod("PUT")) {
+            return [
+                'user_id' => 'required',
+                'category_id' => 'required',
+                'title' => 'required',
+                'desc' => 'required'
+            ];
+        }
+
         return [
             'user_id' => 'required',
             'category_id' => 'required',
