@@ -8,7 +8,7 @@ class PostRepository
 {
     public function getAllPost()
     {
-        return Post::all();
+        return Post::with('user','category')->get();
     }
 
     public function savePost($post)
@@ -21,7 +21,13 @@ class PostRepository
         return Post::findOrFail($id);
     }
 
-    public function deleteById($id){
+    public function deleteById($id)
+    {
         return Post::findOrFail($id)->delete();
+    }
+
+    public function updateById($post, $id)
+    {
+        return Post::findOrFail($id)->update($post);
     }
 }

@@ -19,8 +19,8 @@ class  PostService
 
     public function savePost($post)
     {
-        if(isset($post['photo'])){
-            $post['photo'] =uploadFile($post['photo']);
+        if (isset($post['photo'])) {
+            $post['photo'] = uploadFile($post['photo']);
         };
         return $this->postRepository->savePost($post);
     }
@@ -33,5 +33,21 @@ class  PostService
     public function deleteById($id)
     {
         return $this->postRepository->deleteById($id);
+    }
+
+    public function updateById($post, $id)
+    {
+        if (isset($post['photo'])) {
+            $prevPost = $this->postRepository->viewById($id);
+            if ($prevPost && $prevPost->photo) {
+                dd("Ok");
+                $post['photo'] = uploadFile($post['photo'],$prevPost->photo);
+            }
+            $post['photo'] = uploadFile($post['photo']);
+            dd($post);
+        };
+
+        dd("Post Servie");
+        $this->postRepository->updateById($post, $id);
     }
 }
