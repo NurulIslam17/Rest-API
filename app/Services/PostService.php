@@ -3,9 +3,11 @@
 namespace App\Services;
 
 use App\Repository\PostRepository;
+use App\Traits\GenerateUniqeId;
 
 class  PostService
 {
+    use GenerateUniqeId;
     private $postRepository;
     public function __construct(PostRepository $postRepository)
     {
@@ -22,6 +24,7 @@ class  PostService
         if (isset($post['photo'])) {
             $post['photo'] = uploadFile($post['photo']);
         };
+        $post['po_id'] = $this->generateUniqueId("PI");
         return $this->postRepository->savePost($post);
     }
 
@@ -40,14 +43,10 @@ class  PostService
         if (isset($post['photo'])) {
             $prevPost = $this->postRepository->viewById($id);
             if ($prevPost && $prevPost->photo) {
-                dd("Ok");
                 $post['photo'] = uploadFile($post['photo'],$prevPost->photo);
             }
             $post['photo'] = uploadFile($post['photo']);
-            dd($post);
         };
-
-        dd("Post Servie");
         $this->postRepository->updateById($post, $id);
     }
 }
