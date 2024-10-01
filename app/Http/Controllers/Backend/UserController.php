@@ -4,12 +4,23 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use PHPUnit\Framework\Constraint\FileExists;
 
 class UserController extends Controller
 {
+    private $userService;
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+    public function getAllUser(){
+        return $this->userService->getAllUser();
+    }
+
     public function index()
     {
         $users = User::whereNot('type', 1)->get();
@@ -33,7 +44,7 @@ class UserController extends Controller
                 Log::error("Email Exist Error : This Email is already Used.");
                 return back();
             }
- 
+
             $data = [
                 'name' => $request->name,
                 'email' => $request->email
